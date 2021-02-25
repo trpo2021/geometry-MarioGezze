@@ -10,6 +10,7 @@ bool finding_bracket(char* UKAZAT)
     while (*UKAZAT != 10) {
         if (*UKAZAT == '(') {
             flag = 1;
+            printf("1");
             break;
         }
         UKAZAT++;
@@ -25,6 +26,7 @@ bool finding_bracket2(char* UKAZAT)
     while (*UKAZAT != 10) {
         if (*UKAZAT == ')') {
             flag = 1;
+            printf("2");
             break;
         }
         UKAZAT++;
@@ -40,6 +42,7 @@ bool finding_comma(char* UKAZAT)
     while (*UKAZAT != 10) {
         if (*UKAZAT == ',') {
             flag = 1;
+            printf("3");
             break;
         }
         UKAZAT++;
@@ -49,12 +52,26 @@ bool finding_comma(char* UKAZAT)
     return true;
 }
 
-bool correct(char* Circle, char* str, int N)
+bool correct(char* Circle, char* UKAZAT, int N)
 {
-    int g = 6;
-    if (strncmp(Circle, str, g) != 0)
-        printf("error: Check the spelling of the word  -circle- ");
-    return true;
+    int g = 6, correct = 0, check = 0;
+    if (correct == 0) {
+        if (strncmp(Circle, UKAZAT, g) != 0) {
+            printf("error: Check the spelling of the word  -circle- ");
+            check++;
+            printf("%d", check + 5);
+        }
+        if (finding_bracket(UKAZAT) == true)
+            check++;
+        if (finding_comma(UKAZAT) == true)
+            check++;
+        if (finding_bracket2(UKAZAT) == true)
+            check++;
+    }
+    if (check == 3)
+        return true;
+    if (check != 3)
+        return false;
 }
 
 int main()
@@ -75,8 +92,8 @@ int main()
     }
     if (correct(Circle, str, N) == true) {
         UKAZAT = UKAZAT2;
-    } else
-        return 0;
+        printf("correct");
+    }
     system("pause");
     return 0;
 }
