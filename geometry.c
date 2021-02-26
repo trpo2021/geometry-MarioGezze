@@ -15,8 +15,10 @@ bool finding_bracket(char* UKAZAT) //поиск скобки
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (flag == 0) {
+        printf("Error at column 7: expected '('");
         return false;
+    }
     return true;
 }
 
@@ -30,8 +32,10 @@ bool finding_bracket2(char* UKAZAT) //поиск второй скобки
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (flag == 0) {
+        printf("Error at column 14: expected ')'");
         return false;
+    }
     return true;
 }
 
@@ -45,8 +49,10 @@ bool finding_comma(char* UKAZAT) //поиск запятой
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (flag == 0) {
+        printf("Error expected ','");
         return false;
+    }
     return true;
 }
 
