@@ -1,58 +1,62 @@
 #include <ctype.h>
-#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-bool finding_bracket(char* UKAZAT) //поиск скобки
+bool finding_bracket(char* UKAZAT)
 {
-    int flag = 0;
+    int find = 0;
     while (*UKAZAT != 10) {
         if (*UKAZAT == '(') {
-            flag = 1;
+            find = 1;
             break;
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (find == 0) {
+        printf("Error at column 7: expected '('");
         return false;
+    }
     return true;
 }
 
-bool finding_bracket2(char* UKAZAT) //поиск второй скобки
+bool finding_bracket2(char* UKAZAT)
 {
-    int flag = 0;
+    int find = 0;
     while (*UKAZAT != 10) {
         if (*UKAZAT == ')') {
-            flag = 1;
+            find = 1;
             break;
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (find == 0) {
+        printf("Error at column 14: expected ')'");
         return false;
+    }
     return true;
 }
 
-bool finding_comma(char* UKAZAT) //поиск запятой
+bool finding_comma(char* UKAZAT)
 {
-    int flag = 0;
+    int find = 0;
     while (*UKAZAT != 10) {
         if (*UKAZAT == ',') {
-            flag = 1;
+            find = 1;
             break;
         }
         UKAZAT++;
     }
-    if (flag == 0)
+    if (find == 0) {
+        printf("Error expected ','");
         return false;
+    }
     return true;
 }
 
 bool correct(char* Circle, char* UKAZAT, int N)
-{ //проверка правильности вводимых данных
-
+{
     int g = 6, check = 0;
     if (strncmp(Circle, UKAZAT, g) == 0) {
         check++;
@@ -72,7 +76,7 @@ bool correct(char* Circle, char* UKAZAT, int N)
     return true;
 }
 void translation_universal(char* UKAZAT, double* x1)
-{ //переводим х из текста в число
+{
     char* point;
     double c;
     int i = 0;
@@ -98,7 +102,7 @@ void calculation(double* A)
     float S;
     float P;
     P = 2 * pi * A[2];
-    S = pi * pow(A[2], 2);
+    S = pi * A[2] * A[2];
     printf("Perimetr = %f\n", P);
     printf("Area = %f\n", S);
 }
