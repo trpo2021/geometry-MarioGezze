@@ -8,4 +8,6 @@ main: main.o geometry.o
 	     gcc main.o geometry.o -o geometry.exe
 
 all: main
-	
+
+clean:
+		rm -rf *.o main
