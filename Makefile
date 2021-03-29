@@ -7,7 +7,5 @@ geometry.o: geometry1.c
 main: main.o geometry.o
 	     gcc main.o geometry.o -o geometry.exe
 
-all: main
-
 clean:
-		rm -rf *.o main
+			rm -rf *.o main
