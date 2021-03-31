@@ -1,5 +1,5 @@
-main: main.o geometry.o
-	gcc main.o geometry.o -o geometry.exe
+main: main.o geometry1.o
+	gcc main.o geometry1.o -o geometry.exe
 
 main.o: main.c
 	gcc -c main.c
