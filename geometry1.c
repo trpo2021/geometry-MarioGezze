@@ -1,5 +1,6 @@
 #include "geometry.h"
 #include <ctype.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -99,6 +100,29 @@ void translation_universal(char* UKAZAT, double* x1)
         }
     }
 }
+bool crossing(double* A, double* B)
+{
+    double distance;
+    distance = sqrt((B[0] - A[0]) * (B[0] - A[0]) + (B[1] - A[1]) * (B[1] - A[1]));
+    if ((A[0] == B[0]) && (A[1] == B[1]) && (A[2] == B[2])) {
+        printf("The shapes are the same and are at the same coordinates");
+        return true;
+    }
+    if (distance == A[3] + A[3]) {
+        printf("shapes intersect at one point");
+        return true;
+    }
+    if (distance + A[3] < B[3] || distance + B[3] < A[3]) {
+        printf("are inscribed");
+        return true;
+    }
+    if (distance < A[3] + B[3]) {
+        printf("shapes intersect at two point");
+        return true;
+    }
+    return false;
+}
+
 void calculation(double* A)
 {
     float pi = 3.1415;
@@ -106,6 +130,7 @@ void calculation(double* A)
     float P;
     P = 2 * pi * A[2];
     S = pi * A[2] * A[2];
+    A[3] = S;
     printf("Perimetr = %f\n", P);
     printf("Area = %f\n", S);
 }
