@@ -1,16 +1,19 @@
-main: main.o geometry1.o
-	gcc main.o geometry1.o -o geometry.exe
-
-main.o: main.c
-	gcc -c main.c
-
-geometry.o: geometry1.c
-	gcc -c geometry1.c
-ctestmain.o: ctestmain.c
-	gcc -c ctestmain.c
-gtest.o: gtest.c
-	gcc -c gtest.c
-test: ctestmain.o gtest.o geometry.o ctest.h
-	gcc ctestmain.o gtest.o geometry1.o -o test
+CC = gcc
+main: lib
+	$(CC) geometry.a -o geometry.exe
+lib: main.o geometry1.o
+	ar rcs geometry.a *.o
+libtest: geometry1.o gtest.o ctestmain.o
+	ar rcs testlib.a *.o
+main.o:
+	$(CC) -I src -c src/geometry/main.c
+geometry1.o:
+	$(CC) -I src -c src/libgeometry/geometry1.c
+ctestmain.o:
+	$(CC) -I src -c src/thirdparty/ctestmain.c
+gtest.o:
+	$(CC) -I src -c src/thirdparty/gtest.c
+test: libtest
+	$(CC) testlib.a -o test
 clean:
 	rm -rf *.o main
