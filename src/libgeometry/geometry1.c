@@ -1,5 +1,5 @@
-#include "geometry.h"
 #include <ctype.h>
+#include <libgeometry/geometry.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -103,7 +103,8 @@ void translation_universal(char* UKAZAT, double* x1)
 bool crossing(double* A, double* B)
 {
     double distance;
-    distance = sqrt((B[0] - A[0]) * (B[0] - A[0]) + (B[1] - A[1]) * (B[1] - A[1]));
+    distance = sqrt(
+            (B[0] - A[0]) * (B[0] - A[0]) + (B[1] - A[1]) * (B[1] - A[1]));
     if ((A[0] == B[0]) && (A[1] == B[1]) && (A[2] == B[2])) {
         printf("The shapes are the same and are at the same coordinates");
         return true;

@@ -1,8 +1,8 @@
-#include "ctest.h"
+#include <thirdparty/ctest.h>
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "geometry.h"
+#include <libgeometry/geometry.h>
 
 CTEST(input, correct)
 {
