@@ -1,6 +1,6 @@
 CC = gcc
 main: lib
-	$(CC) geometry.a -o geometry.exe
+	$(CC) geometry.a -lm -o geometry.exe
 lib: main.o geometry1.o
 	ar rcs geometry.a *.o
 libtest: geometry1.o gtest.o ctestmain.o
