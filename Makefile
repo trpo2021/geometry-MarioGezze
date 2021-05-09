@@ -24,10 +24,8 @@ gtest.o:
 	$(CC) $(O_FLAGS) $(LIBTEST)/gtest.c -o $(OBGTEST)/$@
 test: geometry1.o gtest.o ctestmain.o
 	$(CC) $(MAINTEST) -o $(BINDIR)test
-RM=rm -rf *.o.d.a
-DELETE_GEOMETRY =obj\src\geometry
-DELETE_LIBGEOMETRY =
-DELETE_TEST =
+
 .PHONY: clean
 clean:
-	$(RM) $(OBGMAIN) $(OBGLIB)
+	$(RM) $(OBGMAIN)/*.o $(OBGLIB)/*.o $(OBGMAIN)/*.a $(OBGLIB)/*.a $(OBGMAIN)/*.d $(OBGLIB)/*.d
+	$(RM) $(OBGTEST)/*.o $(OBGTEST)/*.d
