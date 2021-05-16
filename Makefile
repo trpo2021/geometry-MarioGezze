@@ -1,5 +1,5 @@
 CC = gcc
-O_FLAGS = -I src -c -MP -MMD
+O_FLAGS = -lm -I src -c -MP -MMD
 MAIN = src/geometry
 LIB = src/libgeometry
 LIBTEST = src/thirdparty
