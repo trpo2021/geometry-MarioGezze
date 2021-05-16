@@ -16,3 +16,7 @@ jobs:
       
     - name: make
       run: make
+    - name: clean
+      run: make clean
+    - name: make test
+      run: make test
