@@ -1,5 +1,5 @@
 CC = gcc
-O_FLAGS = -lm -I src -c -MP -MMD
+O_FLAGS = -I src -c -MP -MMD
 MAIN = src/geometry
 LIB = src/libgeometry
 LIBTEST = src/thirdparty
@@ -9,21 +9,21 @@ BINDIR = bin/
 OBGTEST = obj/test
 MAINTEST = $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
 $(BINDIR)geometry.exe: $(OBGLIB)/geometry.a
-	$(CC) $(OBGLIB)/geometry.a -lm -MMD -o $(BINDIR)geometry.exe
+	$(CC) $(OBGLIB)/geometry.a -lm -MMD -o $(BINDIR)geometry.exe -lm
 $(OBGLIB)/geometry.a: $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o
-	ar rcs $(OBGLIB)/geometry.a $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o
+	ar rcs $(OBGLIB)/geometry.a $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o -lm
 libtest: geometry1.o gtest.o ctestmain.o
 	ar rcs testlib.a *.o
 $(OBGMAIN)/main.o:
-	$(CC) $(O_FLAGS) $(MAIN)/main.c -o $@
+	$(CC) $(O_FLAGS) $(MAIN)/main.c -o $@ -lm
 $(OBGLIB)/geometry1.o:
-	$(CC) $(O_FLAGS) $(LIB)/geometry1.c -o $@
+	$(CC) $(O_FLAGS) $(LIB)/geometry1.c -o $@ -lm
 $(OBGTEST)/ctestmain.o:
-	$(CC) $(O_FLAGS) $(LIBTEST)/ctestmain.c -o $@
+	$(CC) $(O_FLAGS) $(LIBTEST)/ctestmain.c -o $@ -lm
 $(OBGTEST)/gtest.o:
-	$(CC) $(O_FLAGS) $(LIBTEST)/gtest.c -o $@
+	$(CC) $(O_FLAGS) $(LIBTEST)/gtest.c -o $@ -lm
 $(BINDIR)test.exe: $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
-	$(CC) $(MAINTEST) -o $(BINDIR)test
+	$(CC) $(MAINTEST) -o $(BINDIR)test -lm
 test: $(BINDIR)test.exe
 
 .PHONY: clean
