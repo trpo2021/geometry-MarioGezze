@@ -9,9 +9,9 @@ BINDIR = bin/
 OBGTEST = obj/test
 MAINTEST = $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
 $(BINDIR)geometry.exe: $(OBGLIB)/geometry.a
-	$(CC) $(OBGLIB)/geometry.a -lm -MMD -o $(BINDIR)geometry.exe -lm
+	$(CC) $(OBGLIB)/geometry.a -MMD -o $(BINDIR)geometry.exe -lm
 $(OBGLIB)/geometry.a: $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o
-	ar rcs $(OBGLIB)/geometry.a $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o -lm
+	ar rcs $(OBGLIB)/geometry.a $(OBGMAIN)/main.o $(OBGLIB)/geometry1.o
 libtest: geometry1.o gtest.o ctestmain.o
 	ar rcs testlib.a *.o
 $(OBGMAIN)/main.o:
