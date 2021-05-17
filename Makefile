@@ -23,9 +23,9 @@ $(OBGTEST)/ctestmain.o:
 	$(CC) $(T_FLAGS) $(LIBTEST)/ctestmain.c -o $@ -lm
 $(OBGTEST)/gtest.o:
 	$(CC) $(T_FLAGS) $(LIBTEST)/gtest.c -o $@ -lm
-$(BINDIR)test.exe: $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
+$(BINDIR)test: $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
 	$(CC) $(MAINTEST) -o $(BINDIR)test -lm
-test: $(BINDIR)test.exe
+test: $(BINDIR)test
 
 .PHONY: clean
 clean:
