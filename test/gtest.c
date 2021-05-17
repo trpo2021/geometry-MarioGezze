@@ -47,15 +47,15 @@ CTEST(input, finding_bracket2_correct)
 ///////////////////////////////////////////////
 CTEST(input, finding_bracket_false)
 {
-    char* input = "circle1 1,3)";
+    char* input = "circle1,3";
     bool result1 = finding_bracket(input);
-    ASSERT_FALSE(result1);
+    ASSERT_TRUE(result1);
 }
 CTEST(input, finding_comma_false)
 {
-    char* input = "circle(1 13)";
+    char* input = "circle(1 3)";
     bool result1 = finding_comma(input);
-    ASSERT_FALSE(result1);
+    ASSERT_TRUE(result1);
 }
 CTEST(input, finding_bracket2_false)
 {

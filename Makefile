@@ -26,7 +26,7 @@ $(OBGTEST)/gtest.o:
 $(BINDIR)test.exe: $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
 	$(CC) $(MAINTEST) -o $(BINDIR)test -lm
 test: $(BINDIR)test.exe
-
+	bin/test.exe
 .PHONY: clean
 clean:
 	$(RM) $(OBGMAIN)/*.o $(OBGLIB)/*.o $(OBGMAIN)/*.a $(OBGLIB)/*.a $(OBGMAIN)/*.d $(OBGLIB)/*.d
