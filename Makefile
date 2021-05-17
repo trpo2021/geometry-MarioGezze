@@ -1,8 +1,9 @@
 CC = gcc
 O_FLAGS = -I src -c -MP -MMD
+T_FLAGS = -I src -I thirdparty -c -MP -MMD
 MAIN = src/geometry
 LIB = src/libgeometry
-LIBTEST = src/thirdparty
+LIBTEST = test
 OBGMAIN = obj/$(MAIN)
 OBGLIB = obj/$(LIB)
 BINDIR = bin/
@@ -19,9 +20,9 @@ $(OBGMAIN)/main.o:
 $(OBGLIB)/geometry1.o:
 	$(CC) $(O_FLAGS) $(LIB)/geometry1.c -o $@ -lm
 $(OBGTEST)/ctestmain.o:
-	$(CC) $(O_FLAGS) $(LIBTEST)/ctestmain.c -o $@ -lm
+	$(CC) $(T_FLAGS) $(LIBTEST)/ctestmain.c -o $@ -lm
 $(OBGTEST)/gtest.o:
-	$(CC) $(O_FLAGS) $(LIBTEST)/gtest.c -o $@ -lm
+	$(CC) $(T_FLAGS) $(LIBTEST)/gtest.c -o $@ -lm
 $(BINDIR)test.exe: $(OBGLIB)/geometry1.o $(OBGTEST)/gtest.o $(OBGTEST)/ctestmain.o
 	$(CC) $(MAINTEST) -o $(BINDIR)test -lm
 test: $(BINDIR)test.exe

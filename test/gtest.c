@@ -1,4 +1,4 @@
-#include <thirdparty/ctest.h>
+#include <ctest.h>
 #include <stdbool.h>
 #include <stdio.h>
 
