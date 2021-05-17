@@ -19,4 +19,4 @@ jobs:
     - name: clean
       run: make clean
     - name: make test
-      run: make test & ./bin/test.exe
+      run: make test && ./bin/test.exe
